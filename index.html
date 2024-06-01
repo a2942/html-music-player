@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jump!</title>
+        <script type="text/javascript">
+            try{
+                if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                    window.location.href="adindex.html";
+                }else{
+                    window.location.href="pcindex.html";
+                }
+            }catch(e){}
+        </script>
+    </head>
+    <body>
+        <center>
+            <p>oops! 当你看见了这个页面，可能有以下原因：</p>
+        </center>
+        <ul>
+            <li>您的浏览器为了你的网上安全或策略原因，禁用了javascript</li>
+            <li>您手动禁用了javascript</li>
+            <li>您的浏览器还不支持javascript</li>
+            <li>或更多未知原因,javascript未能运行</li>
+        </ul>
+        导致无法自动跳转页面
+        你可以点击<a href="pcindex.html">PC页面</a>或<a href="adindex.html">手机页面</a>来继续访问
+    </body>
+</html>

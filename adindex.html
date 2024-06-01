@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/play.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.css">
+    <title class="title1">music音乐播放器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 背景图 */
+        .bj {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1000;
+        }
+
+        /* 整体 */
+        .container {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(248, 250, 252, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* 头部 */
+        .top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            border-radius: 10px 10px 0 0;
+            background-image: linear-gradient(45deg, rgb(99, 202, 243), rgb(9, 253, 180), rgb(40, 106, 230));
+            z-index: 11;
+        }
+
+        .txt {
+            position: absolute;
+            top: 15px;
+            right: 50px;
+            width: 200px;
+            height: 30px;
+            outline: none;
+            border-radius: 15px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 0 20px 0 20px;
+            font-size: 13px;
+        }
+
+        /* 歌曲列表 */
+        .list {
+            position: absolute;
+            left: 0;
+            top: 410px;
+            width: 100%;
+            height: 55%;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .list>ul {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            scroll-behavior: smooth;
+            scroll-padding: 10px;
+        }
+
+        .list>ul>li {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            font-family: 'fangsong';
+            font-size: 16px;
+            margin-top: 1px;
+            padding-left: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            white-space: pre;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .list>ul>li>a {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-image: url(img/play.png);
+            background-size: 100% 100%;
+
+        }
+
+        /* 中间部分 */
+        .middle {
+            position: absolute;
+            left: 0px;
+            top: 60px;
+            width: 100%;
+            height: 410px;
+        }
+
+        .disk {
+            position: absolute;
+            width: 70%;
+            height: auto;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%, -50%) rotateZ(0deg);
+            transition: all 1s;
+        }
+
+        .bar {
+            position: absolute;
+            top: -10px;
+            left: 44%;
+            z-index: 10;
+            transform-origin: 10px 10px;
+            /*  10 -25 */
+            transform: rotateZ(-12deg);
+            transition: all 1s;
+        }
+
+        .poster {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all 1s;
+            aspect-ratio: 1/1;
+        }
+
+
+        #playbuttons {
+            position: absolute;
+            width: 300px;
+            /*height: 280px;*/
+            left: 50%;
+            top: 72%;
+            transform: translate(-50%, -50%) rotateZ(0deg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 进度条 */
+        .music {
+            position: absolute;
+            bottom: 15%;
+            left: 0px;
+            width: 100%;
+            height: 34px;
+            outline: none;
+            background-color: rgb(241, 243, 244);
+        }
+
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+
+        }
+
+        /* 杆和唱片转动 */
+        .playing {
+            transform: rotateZ(5deg);
+        }
+
+        .turn {
+            animation: turn 3s linear infinite;
+        }
+
+        @keyframes turn {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(360deg);
+            }
+        }
+    </style>
+    <script>
+        console.log(`%c欢迎使用%ca2942の音乐播放器`, 'background-color: #990000; color: white; border-radius: 4px 0px 0px 4px; padding: 4px;', 'background-color: #2bb; color: white; border-radius: 0px 4px 4px 0px; padding: 4px;');
+        console.log(`%clog:%c开始加载javascript代码`, 'background-color: #116622; color: white; border-radius: 4px 0px 0px 4px; padding: 4px;', 'background-color: #005656; color: white; border-radius: 0px 4px 4px 0px; padding: 4px;');
+        console.log(`%clog:%c初始化背景图片`, 'background-color: #116622; color: white; border-radius: 4px 0px 0px 4px; padding: 4px;', 'background-color: #005656; color: white; border-radius: 0px 4px 4px 0px; padding: 4px;');
+        console.log(`%clog:%c下载javascript文件`, 'background-color: #116622; color: white; border-radius: 4px 0px 0px 4px; padding: 4px;', 'background-color: #005656; color: white; border-radius: 0px 4px 4px 0px; padding: 4px;');
+    </script>
+</head>
+
+<body>
+    <!-- <video src="./video.mp4" class="bj" muted autoplay loop ></video>  -->
+    <img src="http://a2942.net:5902/tp/ANDROID/" class="bj">
+    <div class="container" id="container">
+        <!-- 头部 -->
+        <div class="top">
+            <h3 class="title"></h3>
+        </div>
+        <div class="middle">
+            <!-- 杆 -->
+            <img src="img/player_bar.png" width="140px" alt="x" class="bar" :class="{playing:isPlay}">
+            <!-- 唱片 -->
+            <img src="img/disc.png" alt="x" class="disk" :class="{turn:isPlay}">
+            <!-- 海报 -->
+            <img class="poster">
+            <div id="playbuttons">
+                <!-- 播放按钮 -->
+                <!--<button onclick="playCurrentSong()">播放</button>-->
+                <!-- 上一首按钮 -->
+                <button onclick="playPreviousSong()">上一首</button>
+                <!-- 循环模式按钮 -->
+                <button onclick="buttonClick()">循环模式：<span id="loop-button"></span></button>
+                <a id="jumplist" href=""><button>定位至列表</button></a>
+                <!-- 下一首按钮 -->
+                <button onclick="playNextSong()">下一首</button>
+            </div>
+            <audio id="my-player" class="music" controls autoplay></audio>
+        </div>
+        <div class="list">
+            <ul id="playlist">
+            </ul>
+        </div>
+    <script src="js/player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.5/dist/sweetalert2.min.js"></script>
+    </div>
+    
+</body>
+
+</html>
