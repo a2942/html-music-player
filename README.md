@@ -9,16 +9,16 @@
 
 ### 支持的功能
 <ol>
-  <li>多媒体控件
-![image](https://github.com/a2942/html-music-player/assets/77714719/1a0510a9-b90c-46c3-b4a2-8c825443a691)
-</li>
+  <li>多媒体控件</li>
   <li>cookie存储播放模式及歌曲</li>
   <li>定位播放列表至播放的歌曲</li>
   <li>自动处理播放错误(上传播放错误至服务器，自动下一曲跳过错误)</li>
-  <li>提供较为详细的控制台日志
-![image](https://github.com/a2942/html-music-player/assets/77714719/17a73819-70f8-4713-bc5d-917be2b5f8b6)
-</li>
+  <li>提供较为详细的控制台日志</li>
 </ol>
+
+![image](https://github.com/a2942/html-music-player/assets/77714719/1a0510a9-b90c-46c3-b4a2-8c825443a691)
+![image](https://github.com/a2942/html-music-player/assets/77714719/94d545ca-5161-49f9-b859-3334d25fa90f)
+![image](https://github.com/a2942/html-music-player/assets/77714719/383ce42e-6864-4070-a59d-877ed6e52e62)
 
 ### 食用方式
 <ol>
