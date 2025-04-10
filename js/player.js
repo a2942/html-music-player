@@ -1,5 +1,5 @@
-var imgs = "http://a2942.net:5902/tp/1-1/";     //随机专辑图片
-var musuclist = "list.txt";                     //歌单索引
+var imgs = "http://files.a2942.top:5902/tp/1-1/";     //随机专辑图片
+var musuclist = "./list.txt";                     //歌单索引
 var soundsfile = "./sounds/";                   //歌曲存储的文件夹
 
 var logcolor1 = ('background-color: #116622; color: white; border-radius: 4px 0px 0px 4px; padding: 4px;');
