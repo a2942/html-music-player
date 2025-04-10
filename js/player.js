@@ -132,7 +132,7 @@ function playCurrentSong() {
                 const params = new URLSearchParams();
                 params.append('err-music', playlist[currentIndex]);
                 params.append('err-msg', '服务器资源异常、文件格式不支持、网络异常无法正确获得文件或文件被网络劫持');
-                fetch('log/', {
+                fetch('./log/', {
                     method: 'POST',
                     body: params
                 });
@@ -155,7 +155,7 @@ function playCurrentSong() {
                 const params = new URLSearchParams();
                 params.append('err-name', error.name);
                 params.append('err-msg', error);
-                fetch('log/', {
+                fetch('./log/', {
                     method: 'POST',
                     body: params
                 });
