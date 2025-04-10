@@ -4,7 +4,7 @@
 **一切开发旨在学习，请勿用于非法用途**
 
 ### 在线尝试
-<a href="http://a2942.net:5902/music/" target="_blank">http://a2942.net:5902/music/</a>
+<a href="http://files.a2942.top:5902/music/" target="_blank">http://files.a2942.top:5902/music/</a>
 ![image](https://github.com/a2942/html-music-player/assets/77714719/07ea53a4-70c0-47e4-84fc-e9785b851dd2)
 
 ### 支持的功能
@@ -44,7 +44,7 @@
 
 ### 鸣谢
 <ul>
-  <li><a href="http://a2942.net:5902/" target="_blank">我</a> - 为代码编写、测试、纠正、在线随机图片提供支持</li>
+  <li><a href="http://files.a2942.top:5902/" target="_blank">我</a> - 为代码编写、测试、纠正、在线随机图片提供支持</li>
   <li><a href="https://blog.csdn.net/luo1831251387/article/details/117365054" target="_blank">北极光之夜。</a> - 为基础网页框架提供支持</li>
   <li><a href="https://www.forchangeai.com/" target="_blank">FORCHANGE AI EDU</a> - 为代码方向提供支持(有一说一它提供小代码没问题，但是一旦代码多出来就大概率不行了)</li>
   <li><a href="https://code.visualstudio.com/" target="_blank">Visul Studio Code</a> - 代码编写工具及插件</li>
